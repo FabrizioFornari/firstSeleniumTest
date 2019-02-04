@@ -56,7 +56,7 @@ class HttpResponseTest {
         
     	//FirefoxOptions options = new FirefoxOptions();
     	//options.setCapability("marionette", true);
-		System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/mac/geckodriver");
+		System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/linux/geckodriver");
 		//driver = new FirefoxDriver(options);
 		driver = new FirefoxDriver();
     	
