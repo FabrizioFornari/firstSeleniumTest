@@ -28,21 +28,21 @@ class ASimpleSeleniumJunitTest {
 		public void runSelenium() throws InterruptedException {
 				
 //			browser="Chrome";
+// 
 //			
-//			System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver");
-//			
-//			driver = new ChromeDriver();
+			System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/linux/chromedriver");
+			driver = new ChromeDriver();
 
-
+//			System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/mac/geckodriver");
+//			driver = new FirefoxDriver();
 			
-	    	String projectPath = System.getProperty("user.dir");  
-			System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/linux/geckodriver");
-			driver = new FirefoxDriver();
+	    	
+			
 	    	
 			//testGoogle();
 			testGmail();
 			
-			driver.close();
+			
 			//testPros();
 			//testProsWebElements();	
 			
@@ -57,7 +57,8 @@ class ASimpleSeleniumJunitTest {
 		
 		@AfterAll
 		static void tearDownAfterClass() throws Exception {
-
+			driver.close();
+			driver.quit();
 		}
 
 		public static void setBrowser() {
@@ -130,14 +131,14 @@ class ASimpleSeleniumJunitTest {
 			
 			//Find Element by className
 			driver.findElement(By.className("CwaK9")).click();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			
 			//Find Element by className
 			driver.findElement(By.name("password")).sendKeys("test");
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 					
 			driver.findElement(By.className("CwaK9")).click();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			
 			System.out.println(driver.getTitle());
 			
