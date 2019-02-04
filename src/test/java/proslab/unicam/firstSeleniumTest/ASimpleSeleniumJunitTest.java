@@ -33,7 +33,7 @@ class ASimpleSeleniumJunitTest {
 //			System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/linux/chromedriver");
 //			driver = new ChromeDriver();
 
-			System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/mac/geckodriver");
+			System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/linux/geckodriver");
 			driver = new FirefoxDriver();
 			
 	    	
