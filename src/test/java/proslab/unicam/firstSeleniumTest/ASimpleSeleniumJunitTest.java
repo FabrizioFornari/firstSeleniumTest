@@ -24,16 +24,21 @@ class ASimpleSeleniumJunitTest {
 		static String projectPath = System.getProperty("user.dir"); 
 		
 		@Test
-		@Disabled
+		//@Disabled
 		public void runSelenium() throws InterruptedException {
 				
-			browser="Chrome";
-			
-			System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver");
-			
-			driver = new ChromeDriver();
+//			browser="Chrome";
+//			
+//			System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver");
+//			
+//			driver = new ChromeDriver();
 
 
+			
+	    	String projectPath = System.getProperty("user.dir");  
+			System.setProperty("webdriver.gecko.driver", projectPath+"/drivers/linux/geckodriver");
+			driver = new FirefoxDriver();
+	    	
 			//testGoogle();
 			testGmail();
 			
@@ -129,14 +134,11 @@ class ASimpleSeleniumJunitTest {
 			//Find Element by className
 			driver.findElement(By.name("password")).sendKeys("test");
 			Thread.sleep(1000);
-			
-			
+					
 			driver.findElement(By.className("CwaK9")).click();
 			Thread.sleep(1000);
 			
-			
 			System.out.println(driver.getTitle());
-
 			
 			assertNotEquals("Gmail", driver.getTitle());
 		}

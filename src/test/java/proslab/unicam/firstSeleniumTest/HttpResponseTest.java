@@ -45,7 +45,7 @@ class HttpResponseTest {
 	}
 
 	@Test
-//	@Disabled
+	@Disabled
 	void checkBrokenLinks() {
         String href = null;
 	
