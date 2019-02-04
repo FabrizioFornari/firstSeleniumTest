@@ -124,6 +124,7 @@ class ASimpleSeleniumJunitTest {
 		public static void testGmail() throws InterruptedException {
 			driver.get("http://mail.google.com");
 
+			System.out.println(driver.getTitle());
 			//findElement by id
 			driver.findElement(By.id("identifierId")).sendKeys("fabrizio.fornari@studenti.unicam.it");
 			
