@@ -13,12 +13,18 @@ import java.util.List;
 
 public class HttpResponse {
 
+	
     WebDriver driver;
     int statusCode;
+    
+    public static void main(String args[]) {
+        new HttpResponse().checkNoBrokenLinksArePresent();
+    }
+    
 
-    public void checkBrokenLinks() {
+    public void checkNoBrokenLinksArePresent() {
     	String projectPath = System.getProperty("user.dir");  
-		System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver");
+		System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/mac/chromedriver");
 		
 		
         driver = new ChromeDriver();
@@ -27,15 +33,27 @@ public class HttpResponse {
 //Get all the links on the page
         List<WebElement> links = driver.findElements(By.cssSelector("a"));
 
+        System.out.println(links.size());
         String href;
 
+        
         for(WebElement link : links) {
-            href = link.getAttribute("href");
-            statusCode = new HttpResponse().httpResponseCodeViaGet(href);
-
-            if(200 != statusCode) {
-                System.out.println(href + " gave a response code of " + statusCode);
-            }
+        	
+	            href = link.getAttribute("href");
+	            //System.out.println(href);
+	            
+	            try{
+	            	statusCode = new HttpResponse().httpResponseCodeViaGet(href);
+	            }catch(Exception e) {
+	            	System.out.println("ERROR trying to contact: " +href);
+	            }
+	
+//	            if(200 != statusCode) {
+//	                System.out.println(href + " gave a response code of " + statusCode);
+//	            }
+        	
+        		
+        	
         }
     }
     
@@ -47,7 +65,5 @@ public class HttpResponse {
 	    return RestAssured.post(url).statusCode();
 	}
 	
-    public static void main(String args[]) {
-        new HttpResponse().checkBrokenLinks();
-    }
+    
 }
